@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongodb CRUD Operations</title>
+   <style>
+    
+    body {
+    background-color: #D1E7DD;
+    margin: 0;
+	width: 100vw;
+	height: auto;
+	background: #ecf0f3;
+	display: flex;
+	
+	text-align: center;
+	justify-content: center;
+	place-items: center;
+	overflow: hidden;
+	font-family: poppins;
+    overflow-y: scroll;
+  }
+  /* Style the form container */
+  .container {
+    position: relative;
+	width: 150px;
+	height: auto;
+	border-radius: 20px;
+	padding: 40px;
+	box-sizing: border-box;
+	box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+	text-align: left;
+    margin: 0 auto;
+    width: 40%;
+    margin-top: 50px;
+  }
+  
+  /* Style the form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    display: block;
+	width: 100%;
+	margin-bottom: 4px;
+	margin-top: 12px;
+    
+  }
+  
+  /* Style the form input fields */
+
+  select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid ;
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  input[type=text], input[type=date], input[type=tel], input[type=email], select{
+    display: block;
+	width: 100%;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	background: #ecf0f3;
+	padding: 10px;
+	padding-left: 20px;
+	height: 50px;
+	font-size: 14px;
+	border-radius: 50px;
+	box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+	
+  }
+
+  /* Style the Sign Up button */
+  button {
+    display: block;
+	width: 100%;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	color: white;
+	margin-top: 30px;
+	background: rgb(113, 219, 113);
+	height: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-weight: 900;
+	box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+	transition: 0.5s;
+  }
+  
+  /* Style the Sign Up button on hover */
+  button:hover {
+    box-shadow: none;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+  }
+  input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+}</style>
+  <title>Registeration Form</title>
+
+  
+</head>
+<body>
+
+  
+    {{#if edit_id}}
+     
+    <form method="post" action="/update_book/{{edit_id}}"> 
+    <h1>Mongodb CRUD Operations</h1>
+        {{message}}
+    <br>
+    <h3 style="text-align: center;">Edit</h3>       
+        <div class="form-group">
+            <label for="studentname" >Name</label>
+            <input type="text" style="text-transform: capitalize;" class="form-control" id="studentname" name="studentname" placeholder="Name" value="{{edit_book.studentname}}" required>
+        </div>
+    
+      <div class="form-group ">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="{{edit_book.date_of_birth}}" required>
+      </div>
+      <div class="form-group">
+      <label for="fathername ">Father name</label>
+      <input type="text" class="form-control" id="fathername"  name="fathername" placeholder="Father Name" value="{{edit_book.fathername}}" required>
+  </div>
+  <div class="form-group">
+      <label for="mothername ">Mother name</label>
+      <input type="text" class="form-control" id="mothername"  name="mothername" placeholder="Mother Name" value="{{edit_book.mothername}}" required>
+  </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{edit_book.email}}" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" id="phone"  name="phone" placeholder="Phone Number" minlength="13" maxlength ="13" value="{{edit_book.phone}} " required>
+  </div>
+ 
+<div class="form-group">
+  <label for="Bloodgroup">Choose your Bloodgroup:</label>
+<select class="blood" id="blood" name="blood" placeholder="Select your Blood Group" value="{{edit_book.blood}}" required>
+  <option> - </option>
+  <option>O +ve</option>
+  <option>O -ve</option>
+  <option>O Unknown</option>
+  <option>A +ve</option>
+  <option>A -ve</option>
+  <option>A Unknown</option>
+  <option>B +ve</option>
+  <option>B -ve</option>
+  <option>B Unknown</option>
+  <option>AB +ve</option>
+  <option>AB -ve</option>
+  <option>AB Unknown</option>
+  <option>Unknown</option>
+ </select>
+</div>
+
+  <button type="submit" style="align-items: center;">Submit</button>
+        <ul>
+        {{#each students}}
+        <li> {{this.studentname}} - {{this.date_of_birth}} - {{this.fathername}} - {{this.mothername}} {{this.email}} - {{this.phone}} - {{this.blood}} <a href="/?edit_id={{this._id}}">Edit</a>  <a href="/?delete_id={{this._id}}" onclick="return confirm('Are you sure want to delete?')" >Delete</a></li>
+        {{/each}}
+    </ul>
+    </form><br><br>
+    
+    {{else}}
+    
+    <form method="post" action="/store_book">
+    <h1>Mongodb CRUD Operations</h1>
+        {{message}}
+    <br>
+      <h3>Create</h3>
+        <div class="form-group">
+            <label for="studentname" >Name</label>
+            <input type="text" style="text-transform: capitalize;" class="form-control"  name="studentname" placeholder="Name" required>
+        </div>
+    
+  <div class="form-group ">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+  </div>
+  <div class="form-group">
+      <label for="fathername ">Father name</label>
+      <input type="text" class="form-control" id="fathername"  name="fathername" placeholder="Father Name" required>
+  </div>
+  <div class="form-group">
+      <label for="mothername ">Mother name</label>
+      <input type="text" class="form-control" id="mothername"  name="mothername" placeholder="Mother Name" required>
+  </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" id="phone" value="+91" name="phone" placeholder="Phone Number" minlength="13" maxlength ="13" required>
+  </div>
+  <div class="form-group">
+  <label for="Bloodgroup">Choose your Bloodgroup:</label>
+<select class="blood" id="blood" name="blood" placeholder="Select your Blood Group" required>
+  <option> - </option>
+  <option>O +ve</option>
+  <option>O -ve</option>
+  <option>O Unknown</option>
+  <option>A +ve</option>
+  <option>A -ve</option>
+  <option>A Unknown</option>
+  <option>B +ve</option>
+  <option>B -ve</option>
+  <option>B Unknown</option>
+  <option>AB +ve</option>
+  <option>AB -ve</option>
+  <option>AB Unknown</option>
+  <option>Unknown</option>
+ </select>
+</div>
+  
+       
+<button type="submit" style="align-items: center;">Submit</button>
+        <ul>
+        {{#each students}}
+        <li> {{this.studentname}} - {{this.date_of_birth}} - {{this.fathername}} - {{this.mothername}} - {{this.email}} - {{this.phone}} - {{this.blood}} <a href="/?edit_id={{this._id}}">Edit</a>  <a href="/?delete_id={{this._id}}" onclick="return confirm('Are you sure want to delete?')" >Delete</a></li>
+        {{/each}}
+    </ul>
+    </form><br><br>
+
+   {{/if}}
+   
+</body>
+</html>

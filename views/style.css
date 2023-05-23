@@ -1,0 +1,128 @@
+/* Set the body background color to light green */
+body {
+    background-color: #D1E7DD;
+    margin: 0;
+	width: 100vw;
+	height: auto;
+	background: #ecf0f3;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	place-items: center;
+	overflow: hidden;
+	font-family: poppins;
+    overflow-y: scroll;
+  }
+  .header {
+    color: #fff;
+    text-align: center;
+    background-color: rgb(84, 216, 117);
+    padding: 20px 40px;
+    border-bottom: 2px solid #494848;
+  }
+  /* Style the form container */
+  .container {
+    position: relative;
+	width: 400px;
+	height: auto;
+	background-color: rgb(84, 216, 117);
+  box-shadow: rgb(0,0,0) 0px 5px 15px;
+  width: 400px;
+	text-align: left;
+  margin-top: 50px;
+  }
+  
+  /* Style the form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    display: block;
+	width: 100%;
+	margin-bottom: 4px;
+	margin-top: 12px;
+    margin-left: 12px;
+  }
+  #gender{
+    text-align: center;
+    
+    border-radius: 50px;
+	box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  }
+  #file{
+    text-align: center;
+    padding: 20px;
+    border-radius: 50px;
+	box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  }
+  
+  input[id=male]{
+    margin-right: 23px;
+    
+  }
+ #female{
+    margin-left: 12px;
+    margin-bottom: -10px;
+ }
+ input[id=female]{
+    margin-right: 20px;
+  }
+  #male{
+    margin-top: 10px;
+  }
+  /* Style the form input fields */
+
+  select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid ;
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  input[type=text], input[type=date], input[type=tel], input[type=email], select{
+    display: block;
+	width: 100%;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	background: #ecf0f3;
+	padding: 10px;
+	padding-left: 20px;
+	height: 50px;
+	font-size: 14px;
+	border-radius: 50px;
+	box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+	
+  }
+  
+
+  /* Style the Sign Up button */
+  button {
+    display: block;
+	width: 100%;
+	
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	color: white;
+	margin-top: 30px;
+	background: rgb(226, 160, 121);
+	height: 40px;
+	border-radius: 20px;
+	font-weight: 900;
+	}
+  
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+  }
+  input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+}
